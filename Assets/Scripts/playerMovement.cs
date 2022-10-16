@@ -33,7 +33,15 @@ public class playerMovement : MonoBehaviour
     private void  FixedUpdate()
     {
         HorizontalInput = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(HorizontalInput * speed, rb.velocity.y);
+        if (isGrounded() == false)
+        {
+            //mid air control
+            rb.velocity = new Vector2(HorizontalInput * speed, rb.velocity.y);
+        } else
+        {
+            //ground control
+            rb.velocity = new Vector2(HorizontalInput * speed, rb.velocity.y);
+        }
         if (Input.GetKey(KeyCode.Space) && isGrounded()) 
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
