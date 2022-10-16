@@ -11,7 +11,7 @@ public class playerMovement : MonoBehaviour
     public float speed;
     public float jumpForce;
     public Camera MainCamera;
-
+    private Animator anim;
     [SerializeField] private LayerMask jumpableGround;
 
     // Start is called before the first frame update
@@ -19,6 +19,7 @@ public class playerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
     }
     private void Awake()
     {
@@ -32,6 +33,20 @@ public class playerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && isGrounded()) 
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+
+        //Animation logic
+        if (HorizontalInput > 0f)
+        {
+            anim.SetBool("running", true);
+        }
+        else if (HorizontalInput < 0f)
+        {
+            anim.SetBool("running", true);
+        }
+        else 
+        {
+            anim.SetBool("running", false);
         }
     }
     //called after all other update functions
