@@ -20,26 +20,24 @@ public class Move : MonoBehaviour
     private bool onGround;
 
 
-    // Start is called before the first frame update
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<Ground>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         direction.x = input.RetreiveMoveInput();
         desiredVelocity = new Vector2(direction.x, 0f) * Mathf.Max(maxSpeed - ground.GetFriction(), 0);
-        Debug.Log(ground.GetFriction());
     }
+
     private void FixedUpdate()
     {
         onGround = ground.GetOnGround();
         velocity = body.velocity;
 
-        acceleration = onGround ? maxAcceleration : maxAcceleration;
+        acceleration = onGround ? maxAcceleration : maxAirAcceleration;
         maxSpeedChange = acceleration * Time.deltaTime;
         velocity.x = Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
 
