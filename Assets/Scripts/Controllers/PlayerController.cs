@@ -17,6 +17,6 @@ public class PlayerController : InputController
 
     public override bool RetreiveShootInput()
     {
-        return Input.GetButtonDown("Jump");
+        return Input.GetButtonDown("Fire1");
     }
 }

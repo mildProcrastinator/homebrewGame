@@ -8,4 +8,5 @@ public abstract class InputController : ScriptableObject
     public abstract bool RetreiveJumpInput();
 
     public abstract bool RetreiveShootInput();
+
 }

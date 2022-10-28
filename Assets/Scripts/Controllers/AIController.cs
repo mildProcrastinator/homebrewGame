@@ -16,6 +16,6 @@ public class AIController : InputController
     }
     public override bool RetreiveShootInput()
     {
-        return Input.GetButtonDown("Fire1");
+        return true;
     }
 }
