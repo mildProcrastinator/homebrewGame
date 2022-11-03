@@ -10,7 +10,8 @@ public class PlayerAnimation : MonoBehaviour
     private SpriteRenderer sprite;
     private Ground ground;
     private float direction;
-  
+    private bool facingRight = false;
+
     // Start is called before the first frame update
 
     void Awake()
@@ -31,19 +32,27 @@ public class PlayerAnimation : MonoBehaviour
     private void UpdateAnimationState()
     {
         //Animation logic
-        if (direction > 0f)
+        if (direction > 0f && facingRight)
         {
             anim.SetBool("running", true);
-            sprite.flipX = false;
+            Flip();
         }
-        else if (direction < 0f)
+        else if (direction < 0f && !facingRight)
         {
             anim.SetBool("running", true);
-            sprite.flipX = true;
+            Flip();
         }
-        else
+        else if(direction == 0f)
         {
             anim.SetBool("running", false);
         }
     }
+    void Flip()
+    {
+        Vector3 currentScale = gameObject.transform.localScale;
+        currentScale.x *= -1;
+        gameObject.transform.localScale = currentScale;
+        facingRight = !facingRight;
+    }
+
 }
