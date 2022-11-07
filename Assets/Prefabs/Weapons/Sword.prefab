@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3381688514692580549}
   - component: {fileID: 3381688514692580555}
   - component: {fileID: -4091466794749394461}
-  - component: {fileID: 4532796658341542053}
-  m_Layer: 10
+  - component: {fileID: 5981358744027436681}
+  m_Layer: 8
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3381688514692580550}
-  m_LocalRotation: {x: -0, y: -0, z: 0.26140174, w: 0.9652301}
+  m_LocalRotation: {x: 0, y: 0, z: 0.2614059, w: 0.965229}
   m_LocalPosition: {x: 0.023, y: -0.129, z: 0}
-  m_LocalScale: {x: 0.8009, y: 0.12787695, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 96807d608b59aad4db9585688ad1c051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2081ed856e7e39745ae3f9b1dba8090f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 3381688514692580550}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6df0885021537ef4f94ac2a980ceb332, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -106,8 +106,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &4532796658341542053
-BoxCollider2D:
+--- !u!60 &5981358744027436681
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -119,16 +119,20 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.4887519, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.011248122, y: 0.5}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5194173, y: 0.51687104}
+      - {x: -0.5329966, y: 0.2818379}
+      - {x: 0.0054418016, y: -0.23688738}
+      - {x: 0.24978271, y: 0.02917951}
+      - {x: -0.27321965, y: 0.5396877}
