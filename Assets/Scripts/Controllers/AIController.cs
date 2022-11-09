@@ -18,4 +18,8 @@ public class AIController : InputController
     {
         return true;
     }
+    public override bool RetreiveMeleeInput()
+    {
+        return true;
+    }
 }

@@ -20,7 +20,7 @@ public class Melee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (input.RetreiveShootInput())
+        if (input.RetreiveMeleeInput())
         {
             //Melee
             //Attack();

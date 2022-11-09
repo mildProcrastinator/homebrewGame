@@ -6,7 +6,7 @@ public abstract class InputController : ScriptableObject
 {
     public abstract float RetreiveMoveInput();
     public abstract bool RetreiveJumpInput();
-
     public abstract bool RetreiveShootInput();
+    public abstract bool RetreiveMeleeInput();
 
 }
