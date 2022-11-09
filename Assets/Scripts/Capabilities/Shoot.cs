@@ -23,6 +23,8 @@ public class Shoot : MonoBehaviour
         if(input.RetreiveShootInput()) 
         {
             //shoot
+            //get equipped spell
+            //projectile = getEquipedSpell()
             Instantiate(projectile, firingPoint.transform.position, firingPoint.transform.rotation);
         }
     }

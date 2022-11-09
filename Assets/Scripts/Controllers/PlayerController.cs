@@ -17,6 +17,11 @@ public class PlayerController : InputController
 
     public override bool RetreiveShootInput()
     {
+        return Input.GetButtonDown("Fire2");
+    }
+
+    public override bool RetreiveMeleeInput()
+    {
         return Input.GetButtonDown("Fire1");
     }
 }
