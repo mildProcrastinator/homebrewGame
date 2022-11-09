@@ -498,7 +498,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &1906533462
+--- !u!43 &1380435295
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2686,8 +2686,8 @@ MonoBehaviour:
   - {x: -1.9426022, y: -0.99906397, z: 0}
   - {x: -1.9944652, y: -2.0091126, z: 0}
   m_ShapePathHash: -1745358733
-  m_Mesh: {fileID: 1906533462}
-  m_InstanceId: 54694
+  m_Mesh: {fileID: 1380435295}
+  m_InstanceId: 55468
 --- !u!1001 &2085698589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2695,6 +2695,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 79222539, guid: 2977e27c4bd4edd439ac894937a5709a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1533598618, guid: 2977e27c4bd4edd439ac894937a5709a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1030302229301110754, guid: 2977e27c4bd4edd439ac894937a5709a, type: 3}
       propertyPath: m_Name
       value: Player
