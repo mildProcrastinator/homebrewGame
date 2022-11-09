@@ -13,6 +13,7 @@ public class PlayerAnimation : MonoBehaviour
     private bool facingRight = false;
     [SerializeField] private Camera cam;
     private Vector2 mousePosition;
+    [SerializeField] private GameObject arm;
     // Start is called before the first frame update
 
     void Awake()
@@ -72,6 +73,7 @@ public class PlayerAnimation : MonoBehaviour
         Vector3 currentScale = gameObject.transform.localScale;
         currentScale.x *= -1;
         gameObject.transform.localScale = currentScale;
+        arm.transform.localScale = currentScale;
         facingRight = !facingRight;
     }
 
