@@ -11,7 +11,8 @@ public class PlayerAnimation : MonoBehaviour
     private Ground ground;
     private float direction;
     private bool facingRight = false;
-
+    [SerializeField] private Camera cam;
+    private Vector2 mousePosition;
     // Start is called before the first frame update
 
     void Awake()
@@ -26,21 +27,40 @@ public class PlayerAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 aimDir = mousePosition - new Vector2(this.transform.position.x, this.transform.position.y); ;
+        UpdateFacingSide(aimDir);
+
+
         direction = input.RetreiveMoveInput();
         UpdateAnimationState();
     }
-    private void UpdateAnimationState()
+
+    private void UpdateFacingSide(Vector2 aimDir)
     {
-        //Animation logic
-        if (direction > 0f && facingRight)
+        if (aimDir.x > 0 && facingRight)
         {
-            anim.SetBool("running", true);
             Flip();
         }
-        else if (direction < 0f && !facingRight)
+        else if (aimDir.x < 0 && !facingRight) 
+        {
+            Flip();
+        }
+    }
+    private void UpdateAnimationState()
+    {
+
+
+        //Animation logic
+        if (direction > 0f)
         {
             anim.SetBool("running", true);
-            Flip();
+           
+        }
+        else if (direction < 0f )
+        {
+            anim.SetBool("running", true);
         }
         else if(direction == 0f)
         {
