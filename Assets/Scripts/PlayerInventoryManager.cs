@@ -25,4 +25,8 @@ public class PlayerInventoryManager : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+    private void OnApplicationQuit()
+    {
+        inventory.inventory.Clear();
+    }
 }
