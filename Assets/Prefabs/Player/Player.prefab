@@ -183,9 +183,10 @@ GameObject:
   - component: {fileID: 2010784009}
   - component: {fileID: 2010784020}
   - component: {fileID: 1112243879}
+  - component: {fileID: 8411300911485899300}
   m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,7 +250,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1129016075, guid: 89ccf520a7b83e14dba4cea667a2151f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -549,6 +550,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
 --- !u!114 &1112243879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030302229301110754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d7fa22da9c35d44a3822ec6a9a9013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: 837c3e0cc2286c14da98754d8606cc6c, type: 2}
+--- !u!114 &8411300911485899300
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

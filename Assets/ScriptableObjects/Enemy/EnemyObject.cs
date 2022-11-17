@@ -5,12 +5,12 @@ using Pathfinding;
 public class EnemyObject : ScriptableObject
 {
     [Header("EnemyGameObjectScript")]
-    public Enemy enemy;
     public Ground ground;
     public Rigidbody2D rb;
     public Seeker seeker;
     [Header("Pathfinder")]
     public GameObject target;
+    public string targetTag;
     public float activatedDistance;
     public float pathUpdateSeconds;
 
@@ -20,34 +20,45 @@ public class EnemyObject : ScriptableObject
     public float jumpNodeHeightRequirement;
     public float jumpModifer;
     public float jumpCheckOffset;
-    public Move movement;
+    public Vector2 direction;
 
     [Header("Custom Behavior")]
     public bool followEnabled;
     public bool jumpEnabled;
     public bool directionLookEnabled;
+    public bool desiredJump = false;
 
     private Path path;
     private int currentWaypoint = 0;
     private bool onGround;
 
-    public void GetComponents(Enemy enemy) 
+    public void GetComponents(Ground g, Seeker s, Rigidbody2D r) 
     {
-        enemy = this.enemy;
-        ground = enemy.GetComponent<Ground>();
-        rb = enemy.GetComponent<Rigidbody2D>();
-        seeker = enemy.GetComponent<Seeker>();
+        target = GameObject.FindGameObjectWithTag(targetTag);
+        ground = g.GetComponent<Ground>();
+        rb = r.GetComponent<Rigidbody2D>();
+        seeker = s.GetComponent<Seeker>();
 
-        //InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);    This needs to be somewhere either here or in enemy script
+        
     }
     public void UpdatePath() 
     {
-       // if (followEnabled && TargetInDistance() && seeker.IsDone()) 
-      //  {
-       //     seeker.StartPath(rb.position, target.position, OnPathComplete);
-       // }
+        
+       if (followEnabled && TargetInDistance() && seeker.IsDone()) 
+       {
+            Debug.Log("Updating Path");
+           seeker.StartPath(rb.position, target.transform.position, OnPathComplete);
+       }
     }
-    private void PathFollow() 
+    public void FixedUpdatePath() 
+    {
+        if (TargetInDistance() && followEnabled) 
+        {
+            PathFollow();
+        }
+       
+    }
+    public void PathFollow() 
     {
         if (path == null) 
         {
@@ -60,16 +71,21 @@ public class EnemyObject : ScriptableObject
         }
         onGround = ground.GetOnGround();
 
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-
+        direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+        
         //jump
         if (onGround && jumpEnabled) 
         {
-            if( direction.y >jumpNodeHeightRequirement)
+            if (direction.y > jumpNodeHeightRequirement)
             {
-                //retrivejumpinput(); 
-            }        
+                desiredJump = true;
+            }
+            else 
+            {
+                desiredJump = false;
+            }
         }
+        
         //move
         
 
@@ -82,21 +98,31 @@ public class EnemyObject : ScriptableObject
             currentWaypoint++;
         }
 
-        if (directionLookEnabled) 
-        {
-            if (rb.velocity.x > 0.05f)
-            {
+       // if (directionLookEnabled) 
+        //{
+        //    if (rb.velocity.x > 0.05f)
+        //    {
                 //face right
-            }
-            else if (rb.velocity.x < -0.05f)
-            {
+        //    }
+        //    else if (rb.velocity.x < -0.05f)
+          //  {
                 //face left
-            }
+        //    }
+       // }
+    }
+    public bool TargetInDistance() 
+    {
+        return Vector2.Distance(rb.transform.position, target.transform.position)< activatedDistance;
+    }
+
+    public void OnPathComplete(Path p) 
+    {
+        if (!p.error) 
+        {
+            path = p;
+            currentWaypoint = 0;
         }
     }
 
 
-
-
-    
 }
