@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb319ffdc9524f4185bd4370194c387, type: 3}
+  m_Name: DefaultSkeleton
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  ground: {fileID: 0}
+  rb: {fileID: 0}
+  seeker: {fileID: 0}
+  target: {fileID: 1030302229301110754, guid: 2977e27c4bd4edd439ac894937a5709a, type: 3}
+  activatedDistance: 0
+  pathUpdateSeconds: 0
+  speed: 0
+  nexWaypointDistance: 0
+  jumpNodeHeightRequirement: 0
+  jumpModifer: 0
+  jumpCheckOffset: 0
+  movement: {fileID: 0}
+  followEnabled: 0
+  jumpEnabled: 0
+  directionLookEnabled: 0
