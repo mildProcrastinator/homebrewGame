@@ -19,7 +19,7 @@ public class EnemyObject : MonoBehaviour
     public float speed;
     public float nexWaypointDistance;
     public float jumpNodeHeightRequirement;
-    public float jumpModifer;
+    public float jumpDistanceToTarget;
     public float jumpCheckOffset;
     public Vector2 direction;
 
@@ -30,8 +30,8 @@ public class EnemyObject : MonoBehaviour
     public bool desiredJump = false;
 
     private Path path;
-    private int currentWaypoint;
-    private bool onGround;
+    private int currentWaypoint = 0;
+    private bool onGround = false;
 
     private void Start()
     {
@@ -41,12 +41,11 @@ public class EnemyObject : MonoBehaviour
         seeker = this.GetComponent<Seeker>();
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
     }
-    public void Update() 
+    public void UpdatePath() 
     {
         
        if (followEnabled && TargetInDistance() && seeker.IsDone()) 
        {
-            Debug.Log("Updating Path");
            seeker.StartPath(rb.position, target.transform.position, OnPathComplete);
        }
 
@@ -66,18 +65,19 @@ public class EnemyObject : MonoBehaviour
             return;
         }
 
+        //REACH END OF PATH
         if (currentWaypoint >= path.vectorPath.Count) 
         {
             return;
         }
         onGround = ground.GetOnGround();
 
-        direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized * Time.deltaTime;
-
+        direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         //jump
         if (onGround && jumpEnabled) 
         {
-            if (direction.y > jumpNodeHeightRequirement)
+            Vector2 jumpDistance = new Vector2(rb.position.x - target.transform.position.x, rb.position.y - target.transform.position.y);
+            if (direction.y > jumpNodeHeightRequirement && jumpDistance.y>jumpDistanceToTarget)
             {
                 controller.desiredJump = true;
             }
@@ -88,32 +88,22 @@ public class EnemyObject : MonoBehaviour
         }
 
         //move
-        controller.direction = direction.x;
-
+        controller.SetDirection(direction.x);
 
 
         //calculate next waypoint
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+        Debug.Log("DISTANCE: " + distance);
+       
         if (distance < nexWaypointDistance) 
         {
             currentWaypoint++;
         }
-
-       // if (directionLookEnabled) 
-        //{
-        //    if (rb.velocity.x > 0.05f)
-        //    {
-                //face right
-        //    }
-        //    else if (rb.velocity.x < -0.05f)
-          //  {
-                //face left
-        //    }
-       // }
+        Debug.Log("CURRENT WAYPOINT: " + currentWaypoint);
     }
     public bool TargetInDistance() 
     {
-        return Vector2.Distance(rb.transform.position, target.transform.position)< activatedDistance;
+        return Vector2.Distance(rb.transform.position, target.transform.position) < activatedDistance;
     }
 
     public void OnPathComplete(Path p) 

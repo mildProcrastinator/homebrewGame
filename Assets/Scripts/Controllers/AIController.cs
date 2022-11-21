@@ -27,4 +27,9 @@ public class AIController : InputController
     {
         return true;
     }
+    public void SetDirection(float d) 
+    {
+        direction = d;
+    }
+
 }
