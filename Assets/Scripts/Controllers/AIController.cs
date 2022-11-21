@@ -9,8 +9,8 @@ public class AIController : InputController
 
     public override bool RetreiveJumpInput()
     {
-        //return brain.DesiredJump()
-        return true;
+        return brain.desiredJump;
+        //return true;
 
     }
 

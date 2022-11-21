@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
-public class EnemyObject : ScriptableObject
+public class EnemyObject : MonoBehaviour
 {
     [Header("EnemyGameObjectScript")]
     public Ground ground;
@@ -29,19 +29,18 @@ public class EnemyObject : ScriptableObject
     public bool desiredJump = false;
 
     private Path path;
-    private int currentWaypoint = 0;
+    private int currentWaypoint;
     private bool onGround;
 
-    public void GetComponents(Ground g, Seeker s, Rigidbody2D r) 
+    private void Start()
     {
         target = GameObject.FindGameObjectWithTag(targetTag);
-        ground = g.GetComponent<Ground>();
-        rb = r.GetComponent<Rigidbody2D>();
-        seeker = s.GetComponent<Seeker>();
-
-        
+        ground = this.GetComponent<Ground>();
+        rb = this.GetComponent<Rigidbody2D>();
+        seeker = this.GetComponent<Seeker>();
+        InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
     }
-    public void UpdatePath() 
+    public void Update() 
     {
         
        if (followEnabled && TargetInDistance() && seeker.IsDone()) 
@@ -49,8 +48,9 @@ public class EnemyObject : ScriptableObject
             Debug.Log("Updating Path");
            seeker.StartPath(rb.position, target.transform.position, OnPathComplete);
        }
+
     }
-    public void FixedUpdatePath() 
+    public void FixedUpdate() 
     {
         if (TargetInDistance() && followEnabled) 
         {
@@ -72,7 +72,8 @@ public class EnemyObject : ScriptableObject
         onGround = ground.GetOnGround();
 
         direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        
+
+        Debug.Log("on ground: "+onGround);
         //jump
         if (onGround && jumpEnabled) 
         {
