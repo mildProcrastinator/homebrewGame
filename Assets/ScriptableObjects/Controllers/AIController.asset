@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d280460b819eab49868dae6d8b2c53b, type: 3}
   m_Name: AIController
   m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: 7fb1db6ecd059bb4b8c2004b7be40fdc, type: 2}
+  desiredJump: 0
+  direction: 0.0000043897385

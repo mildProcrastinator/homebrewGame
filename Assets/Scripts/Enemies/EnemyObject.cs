@@ -8,6 +8,7 @@ public class EnemyObject : MonoBehaviour
     public Ground ground;
     public Rigidbody2D rb;
     public Seeker seeker;
+    public AIController controller;
     [Header("Pathfinder")]
     public GameObject target;
     public string targetTag;
@@ -71,24 +72,23 @@ public class EnemyObject : MonoBehaviour
         }
         onGround = ground.GetOnGround();
 
-        direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+        direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized * Time.deltaTime;
 
-        Debug.Log("on ground: "+onGround);
         //jump
         if (onGround && jumpEnabled) 
         {
             if (direction.y > jumpNodeHeightRequirement)
             {
-                desiredJump = true;
+                controller.desiredJump = true;
             }
             else 
             {
-                desiredJump = false;
+                controller.desiredJump = false;
             }
         }
-        
+
         //move
-        
+        controller.direction = direction.x;
 
 
 
