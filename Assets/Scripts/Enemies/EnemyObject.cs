@@ -76,8 +76,8 @@ public class EnemyObject : MonoBehaviour
         //jump
         if (onGround && jumpEnabled) 
         {
-            Vector2 jumpDistance = new Vector2(rb.position.x - target.transform.position.x, rb.position.y - target.transform.position.y);
-            if (direction.y > jumpNodeHeightRequirement && jumpDistance.y>jumpDistanceToTarget)
+          
+            if (direction.y > jumpNodeHeightRequirement)
             {
                 controller.desiredJump = true;
             }
@@ -93,13 +93,12 @@ public class EnemyObject : MonoBehaviour
 
         //calculate next waypoint
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-        Debug.Log("DISTANCE: " + distance);
+        
        
         if (distance < nexWaypointDistance) 
         {
             currentWaypoint++;
         }
-        Debug.Log("CURRENT WAYPOINT: " + currentWaypoint);
     }
     public bool TargetInDistance() 
     {
@@ -112,6 +111,7 @@ public class EnemyObject : MonoBehaviour
         {
             path = p;
             currentWaypoint = 0;
+            controller.SetDirection(0f);
         }
     }
 

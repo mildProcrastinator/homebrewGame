@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AIController
   m_EditorClassIdentifier: 
   desiredJump: 0
-  direction: 0.0000043897385
+  direction: 0.75081205
