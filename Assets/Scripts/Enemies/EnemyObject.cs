@@ -111,7 +111,7 @@ public class EnemyObject : MonoBehaviour
         {
             path = p;
             currentWaypoint = 0;
-            controller.SetDirection(0f);
+            
         }
     }
 

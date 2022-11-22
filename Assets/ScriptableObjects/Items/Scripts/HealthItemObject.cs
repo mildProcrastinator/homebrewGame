@@ -8,6 +8,6 @@ public class HealthItemObject : ItemObject
     public int healthRestoredValue;
     private void Awake()
     {
-        type = ItemType.Default;
+        type = ItemType.Health;
     }
 }

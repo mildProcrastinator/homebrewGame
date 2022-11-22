@@ -9,6 +9,7 @@ public class EnemyAnimation : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sprite;
     private Ground ground;
+    private Rigidbody2D rb;
     private float direction;
     private bool facingRight = false;
     // Start is called before the first frame update
@@ -19,13 +20,14 @@ public class EnemyAnimation : MonoBehaviour
         anim = GetComponent<Animator>();
         direction = input.RetreiveMoveInput();
         sprite = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        direction = input.RetreiveMoveInput();
+        direction = rb.velocity.x;
       
         UpdateAnimationState();
     }
@@ -33,21 +35,20 @@ public class EnemyAnimation : MonoBehaviour
     private void UpdateAnimationState()
     {
 
-        Debug.Log(direction);
         //Animation logic
         if (direction > 0f && facingRight)
         {
-            anim.SetBool("running", true);
+            anim.SetBool("Skeleton_Running", true);
             Flip();
         }
         else if (direction < 0f && !facingRight) 
         {
-            anim.SetBool("running", true);
+            anim.SetBool("Skeleton_Running", true);
             Flip();
         }
-        else 
+        else if(direction == 0)
         {
-            anim.SetBool("running", false);
+            anim.SetBool("Skeleton_Running", false);
         }
     }
     void Flip()
