@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
-public class EnemyObject : MonoBehaviour
+public class EnemyPathfindingFlying : MonoBehaviour
 {
     [Header("EnemyGameObjectScript")]
-    public Ground ground;
+    
     public Rigidbody2D rb;
     public Seeker seeker;
-    public AIController controller;
+    public BatController controller;
     [Header("Pathfinder")]
     public GameObject target;
     public string targetTag;
@@ -28,7 +28,6 @@ public class EnemyObject : MonoBehaviour
     public bool jumpEnabled;
     public bool directionLookEnabled;
     public bool desiredJump = false;
-
     private Path path;
     private int currentWaypoint = 0;
     private bool onGround = false;
@@ -36,7 +35,6 @@ public class EnemyObject : MonoBehaviour
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag(targetTag);
-        ground = this.GetComponent<Ground>();
         rb = this.GetComponent<Rigidbody2D>();
         seeker = this.GetComponent<Seeker>();
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
@@ -70,26 +68,14 @@ public class EnemyObject : MonoBehaviour
         {
             return;
         }
-        onGround = ground.GetOnGround();
 
         direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         //jump
-        if (onGround && jumpEnabled) 
-        {
-          
-            if (direction.y > jumpNodeHeightRequirement)
-            {
-                controller.desiredJump = true;
-            }
-            else 
-            {
-                controller.desiredJump = false;
-            }
-        }
+       
 
         //move
         controller.SetDirection(direction.x);
-
+        controller.SetDirectionVerticle(direction.y);
 
         //calculate next waypoint
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
