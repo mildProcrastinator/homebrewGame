@@ -37,8 +37,8 @@ public class BatController : InputController
     {
         direction = d;
     }
-    public void SetDirectionVerticle(float d)
+    public void SetDirectionVerticle(float v)
     {
-        direction = d;
+        directionVerticle = v;
     }
 }

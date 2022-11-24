@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c7c568fac686454795ca2dabd2a41d6, type: 3}
   m_Name: BatController
   m_EditorClassIdentifier: 
-  direction: 0
-  directionVerticle: 0
+  direction: 0.96904105
+  directionVerticle: -0.24689968

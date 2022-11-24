@@ -23,13 +23,14 @@ public class Fly : MonoBehaviour
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
+        ground = GetComponent<Ground>();
     }
 
     void Update()
     {
         direction.x = input.RetreiveMoveInput();
         direction.y = input.RetreiveMoveInputVerticle();
-        desiredVelocity = new Vector2(direction.x, 0f) * Mathf.Max(maxSpeed, 0);
+        desiredVelocity = new Vector2(direction.x, direction.y) * Mathf.Max(maxSpeed - ground.GetFriction(), 0);
     }
 
     private void FixedUpdate()
