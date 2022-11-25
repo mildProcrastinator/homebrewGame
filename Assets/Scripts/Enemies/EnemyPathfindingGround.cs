@@ -40,6 +40,7 @@ public class EnemyPathfindingGround : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         seeker = this.GetComponent<Seeker>();
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
+        controller = (AIController)GetComponent<EnemyControllerManager>().controller;
     }
     public void UpdatePath() 
     {

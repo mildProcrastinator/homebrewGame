@@ -20,10 +20,18 @@ public class Move : MonoBehaviour
     private bool onGround;
 
 
+    private void Start()
+    {
+        if (gameObject.CompareTag("Enemy"))
+        {
+            input = GetComponent<EnemyControllerManager>().controller;
+        }
+    }
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<Ground>();
+        
     }
 
     void Update()

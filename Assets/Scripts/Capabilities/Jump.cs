@@ -28,7 +28,13 @@ public class Jump : MonoBehaviour
 
         defaultGravityScale = 1f;
     }
-
+    private void Start()
+    {
+        if (gameObject.CompareTag("Enemy"))
+        {
+            input = GetComponent<EnemyControllerManager>().controller;
+        }
+    }
     // Update is called once per frame
     void Update()
     {

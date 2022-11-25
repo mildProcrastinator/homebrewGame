@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4105727325219258582}
   - component: {fileID: 4105727325219258580}
   - component: {fileID: 4105727325219258579}
+  - component: {fileID: 1291102944034839955}
   - component: {fileID: 3130715036843432311}
   - component: {fileID: 4105727325219258574}
   - component: {fileID: 4105727325219258575}
@@ -20,9 +21,10 @@ GameObject:
   - component: {fileID: 4105727325219258573}
   - component: {fileID: 8022063928463232344}
   - component: {fileID: 188474677}
+  - component: {fileID: 986534775}
   m_Layer: 11
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,10 +139,23 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 3bfae7ab45438514799366b50631dade, type: 2}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &1291102944034839955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4105727325219258583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453378a4e7b023a4d909fa138009b3a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
 --- !u!95 &3130715036843432311
 Animator:
   serializedVersion: 4
@@ -173,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be687e51cf321649ac2d7f423d41d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 7ac3193c157ca9b41a572666995f8810, type: 2}
+  input: {fileID: 0}
   maxSpeed: 2
   maxAcceleration: 35
   maxAirAcceleration: 20
@@ -196,12 +211,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4105727325219258583}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b4622f9b40a8724d80d9cd7b4c51ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 7ac3193c157ca9b41a572666995f8810, type: 2}
+  input: {fileID: 0}
   jumpHeight: 4.82
   maxAirJumps: 2
   downwardMovementMultiplier: 3
@@ -246,10 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7087178445249745b823f9d143f6443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ground: {fileID: 4105727325219258575}
   rb: {fileID: 4105727325219258579}
   seeker: {fileID: 4105727325219258577}
-  controller: {fileID: 11400000, guid: 7ac3193c157ca9b41a572666995f8810, type: 2}
+  controller: {fileID: 0}
   target: {fileID: 0}
   targetTag: Player
   activatedDistance: 10
@@ -264,6 +278,7 @@ MonoBehaviour:
   jumpEnabled: 1
   directionLookEnabled: 1
   desiredJump: 0
+  ground: {fileID: 4105727325219258575}
 --- !u!114 &8022063928463232344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,5 +304,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7f6913b137d0142aca54d94c6e3ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 1
-  targetStats: {fileID: 11400000, guid: fe6b67a75b0c6e1439b8eb472452c074, type: 2}
+  damage: 10
+  attackTimer: 1.5
+  targetTag: Player
+--- !u!114 &986534775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4105727325219258583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937ca1e7a88b87244ad1e4d75d500f0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 9a8b59b1e5666b94e9d4730c5613ee9a, type: 2}
+  startingHealth: 50

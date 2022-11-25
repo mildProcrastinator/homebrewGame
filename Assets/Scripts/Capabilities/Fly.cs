@@ -25,7 +25,10 @@ public class Fly : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<Ground>();
     }
-
+    private void Start()
+    {
+        input = (BatController)GetComponent<EnemyControllerManager>().controller;
+    }
     void Update()
     {
         direction.x = input.RetreiveMoveInput();

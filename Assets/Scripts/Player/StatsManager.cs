@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStatsManager : MonoBehaviour
+public class StatsManager : MonoBehaviour
 {
-    [SerializeField] public PlayerStats stats = null;
+    [SerializeField] public Stats stats = null;
+    [SerializeField, Range(0f, 100f)] int startingHealth;
     // Start is called before the first frame update
     void Start()
     {
-        stats.health = 100;
+        stats.health = startingHealth;
     }
 
     // Update is called once per frame
