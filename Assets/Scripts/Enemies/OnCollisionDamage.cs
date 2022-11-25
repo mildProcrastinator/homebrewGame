@@ -6,6 +6,7 @@ public class OnCollisionDamage : MonoBehaviour
 {
 
     private float timer;
+    [SerializeField] int damage;
     [SerializeField] float attackTimer;
     [SerializeField] public Stats targetStats = null;
     private bool hit;
@@ -34,7 +35,7 @@ public class OnCollisionDamage : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && hit == false) 
         {
             //minus health
-            targetStats.TakeDamage(10);
+            targetStats.TakeDamage(damage);
             hit = true;
         }
     }
@@ -44,7 +45,7 @@ public class OnCollisionDamage : MonoBehaviour
         {
 
             //minus health
-            targetStats.TakeDamage(10);
+            targetStats.TakeDamage(damage);
             hit = true;
         }
     }
