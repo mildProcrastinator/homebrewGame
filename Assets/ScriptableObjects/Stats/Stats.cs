@@ -8,8 +8,4 @@ public class Stats : ScriptableObject
 {
     public int health;
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-    }
 }

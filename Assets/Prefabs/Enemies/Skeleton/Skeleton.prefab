@@ -279,7 +279,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   target: {fileID: 0}
   targetTag: Player
-  activatedDistance: 10
+  activatedDistance: 5
   pathUpdateSeconds: 0.5
   speed: 10.96
   nexWaypointDistance: 3

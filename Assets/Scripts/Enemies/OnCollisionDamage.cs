@@ -35,7 +35,7 @@ public class OnCollisionDamage : MonoBehaviour
         if (collision.gameObject.CompareTag(targetTag) && hit == false) 
         {
             //minus health
-            collision.gameObject.GetComponent<StatsManager>().stats.TakeDamage(damage);
+            collision.gameObject.GetComponent<StatsManager>().TakeDamage(damage);
             hit = true;
         }
     }
@@ -45,7 +45,7 @@ public class OnCollisionDamage : MonoBehaviour
         {
 
             //minus health
-            collision.gameObject.GetComponent<StatsManager>().stats.TakeDamage(damage);
+            collision.gameObject.GetComponent<StatsManager>().TakeDamage(damage);
             hit = true;
         }
     }

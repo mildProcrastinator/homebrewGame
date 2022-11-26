@@ -5,19 +5,23 @@ using UnityEngine;
 public class StatsManager : MonoBehaviour
 {
     [SerializeField] public Stats stats = null;
-    [SerializeField, Range(0f, 100f)] int startingHealth;
+    [SerializeField] int health;
     // Start is called before the first frame update
     void Start()
     {
-        stats.health = startingHealth;
+        health = stats.health;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (stats.health <= 0) 
+        if (health <= 0) 
         {
             Destroy(gameObject);
         }
+    }
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
     }
 }
