@@ -30,7 +30,6 @@ public class EnemyPathfindingFlying : MonoBehaviour
     public bool desiredJump = false;
     private Path path;
     private int currentWaypoint = 0;
-    private bool onGround = false;
 
     private void Start()
     {
