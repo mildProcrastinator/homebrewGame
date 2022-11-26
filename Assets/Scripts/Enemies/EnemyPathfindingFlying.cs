@@ -38,6 +38,7 @@ public class EnemyPathfindingFlying : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         seeker = this.GetComponent<Seeker>();
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
+        controller = (BatController)GetComponent<EnemyControllerManager>().controller;
     }
     public void UpdatePath() 
     {

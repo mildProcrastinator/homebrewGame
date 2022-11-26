@@ -6,8 +6,16 @@ public class EnemyControllerManager : MonoBehaviour
 {
     public InputController controller;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        controller = ScriptableObject.CreateInstance<AIController>();
+        if (this.gameObject.name.Contains("Skeleton"))
+        {
+            controller = ScriptableObject.CreateInstance<AIController>();
+        }
+        else 
+        {
+            controller = ScriptableObject.CreateInstance<BatController>();
+        }
+        
     }
 }

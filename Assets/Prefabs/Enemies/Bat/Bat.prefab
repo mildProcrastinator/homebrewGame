@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5066424115846068117}
   - component: {fileID: 5066424115846068116}
+  - component: {fileID: 7840562116403735519}
   - component: {fileID: 5066424115846068115}
   - component: {fileID: 5066424115846068114}
   - component: {fileID: 5066424115846068113}
@@ -94,6 +95,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7840562116403735519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5066424115846068127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453378a4e7b023a4d909fa138009b3a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
 --- !u!114 &5066424115846068115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5066424115846068113}
   seeker: {fileID: 5066424115846068115}
-  controller: {fileID: 11400000, guid: 34d2b1a5c0c4aa14fbb84de556e4d0da, type: 2}
+  controller: {fileID: 0}
   target: {fileID: 0}
   targetTag: Player
   activatedDistance: 10
@@ -200,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e126e2beb14be6b408ab44aa1622b9b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 34d2b1a5c0c4aa14fbb84de556e4d0da, type: 2}
+  input: {fileID: 0}
   maxSpeed: 4
   maxAcceleration: 10.8
   maxAirAcceleration: 10.9
@@ -228,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7f87dcbb7eee245a55d9b3ceaa2f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 34d2b1a5c0c4aa14fbb84de556e4d0da, type: 2}
+  input: {fileID: 0}
 --- !u!95 &5066424115846068202
 Animator:
   serializedVersion: 4

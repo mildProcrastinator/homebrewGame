@@ -27,6 +27,7 @@ public class Fly : MonoBehaviour
     }
     private void Start()
     {
+
         input = (BatController)GetComponent<EnemyControllerManager>().controller;
     }
     void Update()

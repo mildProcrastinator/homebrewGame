@@ -30,7 +30,7 @@ public class Jump : MonoBehaviour
     }
     private void Start()
     {
-        if (gameObject.CompareTag("Enemy"))
+        if (this.gameObject.CompareTag("Enemy"))
         {
             input = GetComponent<EnemyControllerManager>().controller;
         }

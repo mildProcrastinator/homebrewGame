@@ -18,11 +18,19 @@ public class EnemyAnimation : MonoBehaviour
     {
         ground = GetComponent<Ground>();
         anim = GetComponent<Animator>();
-        direction = input.RetreiveMoveInput();
+       
         sprite = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        
+        
     }
-
+    private void Start()
+    {
+       
+        
+            input = GetComponent<EnemyControllerManager>().controller;
+        
+    }
 
     // Update is called once per frame
     void Update()
@@ -36,12 +44,12 @@ public class EnemyAnimation : MonoBehaviour
     {
 
         //Animation logic
-        if (direction > 0f && facingRight)
+        if (direction > 0.3f && facingRight)
         {
             anim.SetBool("Skeleton_Running", true);
             Flip();
         }
-        else if (direction < 0f && !facingRight) 
+        else if (direction < 0.3f && !facingRight) 
         {
             anim.SetBool("Skeleton_Running", true);
             Flip();
