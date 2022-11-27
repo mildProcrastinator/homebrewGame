@@ -49,4 +49,8 @@ public class Ground : MonoBehaviour
     {
         return friction;
     }
+    public void SetOnGround(bool ground) 
+    {
+        onGround = ground;
+    }
 }

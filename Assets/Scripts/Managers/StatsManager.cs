@@ -47,5 +47,6 @@ public class StatsManager : MonoBehaviour
         isInvincible = true;
         invincibleTimer = timeInvincible;
         health -= damage;
+
     }
 }

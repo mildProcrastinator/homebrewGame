@@ -54,6 +54,7 @@ public class Jump : MonoBehaviour
         if (desiredJump)
         {
             desiredJump = false;
+            ground.SetOnGround(false);
             JumpAction();
         }
 
