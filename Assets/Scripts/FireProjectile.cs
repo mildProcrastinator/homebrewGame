@@ -28,7 +28,7 @@ public class FireProjectile : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer.ToString().Equals("0"))
+        if (collision.gameObject.layer.ToString().Equals("11"))
         {
             Destroy(this.gameObject);
 
