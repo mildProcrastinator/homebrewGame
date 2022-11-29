@@ -40,4 +40,5 @@ public class OnCollisionDamage : MonoBehaviour
             collision.gameObject.GetComponent<StatsManager>().TakeDamage(damage);
         }
     }
+    
 }

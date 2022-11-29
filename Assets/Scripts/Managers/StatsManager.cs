@@ -47,6 +47,17 @@ public class StatsManager : MonoBehaviour
         isInvincible = true;
         invincibleTimer = timeInvincible;
         health -= damage;
-
+        PlaySound();
+    }
+    private void PlaySound() 
+    {
+        if (this.gameObject.CompareTag("Player")) 
+        {
+            FindObjectOfType<AudioManager>().Play("PlayerHurt");
+        }
+    }
+    public int GetHealth() 
+    {
+        return health;
     }
 }

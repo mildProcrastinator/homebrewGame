@@ -5,7 +5,6 @@ using UnityEngine;
 public class FireProjectile : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private float damage;
     private Rigidbody2D rb;
     private float Timer;
     // Start is called before the first frame update
@@ -28,14 +27,10 @@ public class FireProjectile : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer.ToString().Equals("0"))
+        if (collision.gameObject.layer.ToString().Equals("11"))
         {
             Destroy(this.gameObject);
-
         }
-    }
-    public float GetDamage() 
-    {
-        return damage;
+        FindObjectOfType<AudioManager>().Play("FireBallExplode");
     }
 }
