@@ -52,4 +52,9 @@ public class Move : MonoBehaviour
 
         body.velocity = velocity;
     }
+
+    public void SetMaxSpeed(float speed) 
+    {
+        maxSpeed = speed;
+    }
 }
