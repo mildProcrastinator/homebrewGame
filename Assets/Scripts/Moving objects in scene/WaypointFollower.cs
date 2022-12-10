@@ -9,6 +9,13 @@ public class WaypointFollower : MonoBehaviour
 
     [SerializeField] private float speed = 2f;
 
+    private Vector2 velocity;
+    private Rigidbody2D body;
+
+    void Awake()
+    {
+        body = GetComponent<Rigidbody2D>();
+    }
     private void Update()
     {
         if (Vector2.Distance(waypoints[currentWaypointIndex].transform.position, transform.position) < .1f)
@@ -19,6 +26,22 @@ public class WaypointFollower : MonoBehaviour
                 currentWaypointIndex = 0;
             }
         }
-        transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, Time.deltaTime * speed);
+        
+    }
+    private void FixedUpdate()
+    {
+        velocity = body.velocity;
+
+        if (waypoints[currentWaypointIndex].transform.position.x - transform.position.x > 0)
+        {
+            velocity.x = speed;
+        }
+        else
+        {
+            velocity.x = -speed;
+        }
+
+        body.velocity = velocity;
+        
     }
 }

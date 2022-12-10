@@ -8,8 +8,7 @@ public class MoveObjectWithPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-         
-                collision.gameObject.transform.SetParent(transform);
+            collision.gameObject.transform.SetParent(transform);
         }
     }
 

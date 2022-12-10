@@ -44,12 +44,24 @@ public class Move : MonoBehaviour
     private void FixedUpdate()
     {
         onGround = ground.GetOnGround();
+        Debug.Log(velocity.x + gameObject.transform.root.GetComponentInChildren<Rigidbody2D>().velocity.x);
         velocity = body.velocity;
 
         acceleration = onGround ? maxAcceleration : maxAirAcceleration;
         maxSpeedChange = acceleration * Time.deltaTime;
         velocity.x = Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
 
+        bool alreadyOnPlatform = false;
+        //  is on moving platform
+        if (gameObject.transform.root.name.Contains("Moving Platform") && alreadyOnPlatform == false)
+        {
+            velocity.x = Mathf.Clamp(gameObject.transform.root.GetComponentInChildren<Rigidbody2D>().velocity.x + velocity.x,-maxSpeed,maxSpeed);
+            alreadyOnPlatform = true;
+        }// not on platform
+        else if (!gameObject.transform.root.name.Contains("Moving Platform"))
+        {
+            alreadyOnPlatform = false;
+        }
         body.velocity = velocity;
     }
 

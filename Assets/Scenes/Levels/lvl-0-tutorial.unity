@@ -2509,7 +2509,7 @@ MonoBehaviour:
   waypoints:
   - {fileID: 1804336922}
   - {fileID: 386539010}
-  speed: 0.05
+  speed: 1.1
 --- !u!114 &673928467
 MonoBehaviour:
   m_ObjectHideFlags: 0
