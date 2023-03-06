@@ -19,8 +19,8 @@ public class EnemyPathfindingGround : MonoBehaviour
     public float speed;
     public float nexWaypointDistance;
     public float jumpNodeHeightRequirement;
-    public float jumpDistanceToTarget;
-    public float jumpCheckOffset;
+    public float jumpTimer;
+    private float jumpTargetTime = 1;
     public Vector2 direction;
 
     [Header("Custom Behavior")]
@@ -74,20 +74,28 @@ public class EnemyPathfindingGround : MonoBehaviour
         onGround = ground.GetOnGround();
 
         direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+        Vector2 jumpDirection = ((Vector2)path.vectorPath[currentWaypoint] - rb.position);
         //jump
-        if (onGround && jumpEnabled) 
+        if (onGround && jumpEnabled && jumpTargetTime>0) 
         {
           
-            if (direction.y > jumpNodeHeightRequirement)
+            if (jumpDirection.y > jumpNodeHeightRequirement)
             {
                 controller.desiredJump = true;
+                jumpTargetTime = -jumpTimer;
             }
             else 
             {
                 controller.desiredJump = false;
             }
+            
+            Debug.Log("Jump Time" + jumpTargetTime);
         }
-
+        else 
+        {
+            controller.desiredJump = false;
+        }
+        jumpTargetTime += Time.deltaTime;
         //move
         controller.SetDirection(direction.x);
 
@@ -112,7 +120,6 @@ public class EnemyPathfindingGround : MonoBehaviour
         {
             path = p;
             currentWaypoint = 0;
-            
         }
     }
 
