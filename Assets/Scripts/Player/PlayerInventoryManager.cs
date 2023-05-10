@@ -18,10 +18,11 @@ public class PlayerInventoryManager : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
         var item = collision.gameObject.GetComponent<Item>();
         if (item)
         {
-            inventory.AddItem(item.GetItem(), 1);
+            inventory.AddItem(item.GetItem(), 1); //Add Item to scriptable object Inventory
             Destroy(collision.gameObject);
         }
     }
